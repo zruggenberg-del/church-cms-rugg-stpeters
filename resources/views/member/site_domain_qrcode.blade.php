@@ -17,13 +17,11 @@ $to = [0, 0, 255];
          
        
 
-    <img src="data:image/png;base64,{!! base64_encode(
-    QrCode::format('png')
-        ->color(244, 197, 66)      // Gold
-        ->backgroundColor(31, 36, 48) // Dark Navy
-        ->margin(1)
-        ->generate($url)
-) !!}" width="120">
+            {!! QrCode::size(120)
+                ->color(244, 197, 66)
+                ->backgroundColor(31, 36, 48)
+                ->margin(1)
+                ->generate($url) !!}
 
         
         <!--  <div class="qr">

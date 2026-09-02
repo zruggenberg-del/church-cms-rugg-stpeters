@@ -142,7 +142,7 @@ class UserProfileUpdateRequest extends FormRequest
                 'city_id'           =>  'required',
                 'state_id'          =>  'required',
                 'country_id'        =>  'required',
-                'pincode'           =>  'required|numeric|digits:6',
+                'pincode'           =>  'required|numeric|digits:5',
                 'family'            =>  'nullable|checkfamily|max:15',
                 'marriage_status'   =>  'required',
                 'notes'             =>  'nullable|string|checknotes',
@@ -220,9 +220,9 @@ class UserProfileUpdateRequest extends FormRequest
 
                 'country_id.required'                           =>  'Country is required',
 
-                'pincode.required'                              =>  'Pincode is required',
-                'pincode.numeric'                               =>  'Pincode should be numeric',
-                'pincode.digits:6'                              =>  'Pincode should be 6 digits',
+                'pincode.required'                              =>  'Zip code is required',
+                'pincode.numeric'                               =>  'Zip code should be numeric',
+                'pincode.digits:5'                              =>  'Zip code should be 5 digits',
 
                 'membership_type.required'                      =>  'Membership Type is required',
                 'membership_start_date.required'                =>  'Membership Start Date is required',

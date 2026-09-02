@@ -48,7 +48,7 @@
 
         <div class="form-group my-6">
             <div class="">
-                <input type="text" id="pincode" class="form-control px-2 py-2 w-full text-sm border" name="pincode" v-model="pincode" placeholder="Pincode">
+                <input type="text" id="pincode" class="form-control px-2 py-2 w-full text-sm border" name="pincode" v-model="pincode" placeholder="Zip code" maxlength="5">
                 <span class="invalid-feedback text-red-500 text-xs font-semibold" v-if="errors.pincode">{{ errors.pincode[0] }}</span>
             </div>
         </div>

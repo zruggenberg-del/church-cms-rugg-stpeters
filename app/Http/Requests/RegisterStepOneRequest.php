@@ -89,7 +89,7 @@ class RegisterStepOneRequest extends FormRequest
         }
         
 
-        $rules['pincode'] = ['required'];
+        $rules['pincode'] = ['required', 'numeric', 'digits:5'];
         
         return $rules;
     }
@@ -109,7 +109,9 @@ class RegisterStepOneRequest extends FormRequest
 
             'state_id.required'                     => 'State is required',
 
-            'pincode.required'                      => 'Pincode is required',
+            'pincode.required'                      => 'Zip code is required',
+            'pincode.numeric'                         => 'Zip code should be numeric',
+            'pincode.digits:5'                        => 'Zip code should be 5 digits',
         ];
     }
 }

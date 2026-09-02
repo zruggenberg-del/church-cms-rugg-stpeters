@@ -123,7 +123,7 @@ $profile = optional($user->userprofile);
                 ['label' => 'City', 'value' => optional($profile->city)->name],
                 ['label' => 'State', 'value' => optional($profile->state)->name],
                 ['label' => 'Country', 'value' => optional($profile->country)->name],
-                ['label' => 'Pincode', 'value' => $profile->pincode],
+                ['label' => 'Zip code', 'value' => $profile->pincode],
                 ];
                 @endphp
                 @foreach($address as $row)

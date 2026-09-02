@@ -201,7 +201,7 @@
                 </div>
             </div>
 
-            {{-- Country / State / City / Pincode --}}
+            {{-- Country / State / City / Zip code --}}
             <div class="tw-form-group">
                 <div class="flex flex-col lg:flex-row">
                     <div class="w-full lg:w-1/4 lg:mr-8 md:pr-8">
@@ -250,11 +250,11 @@
 
                     <div class="w-full lg:w-1/4 lg:mr-8 md:pr-8">
                         <div class="mb-2">
-                            <label for="pincode" class="tw-form-label">Pincode<span class="text-red-500">*</span></label>
+                            <label for="pincode" class="tw-form-label">Zip code<span class="text-red-500">*</span></label>
                         </div>
                         <div class="mb-2">
                             <input type="text" class="tw-form-control w-full" id="pincode" name="pincode"
-                                value="{{ old('pincode', $user->userprofile->pincode) }}" placeholder="Enter Pincode">
+                                value="{{ old('pincode', $user->userprofile->pincode) }}" placeholder="Enter Zip code" maxlength="5">
                         </div>
                         @error('pincode')<span class="text-red-500 text-xs font-semibold">{{ $message }}</span>@enderror
                     </div>

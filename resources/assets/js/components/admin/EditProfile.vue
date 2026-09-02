@@ -145,10 +145,10 @@
         <div class="flex">
           <div class="w-full lg:w-1/3 mr-2 lg:mr-8 md:mr-8">
             <div class="mb-2">
-              <label for="pincode" class="tw-form-label">Pincode</label>
+              <label for="pincode" class="tw-form-label">Zip code</label>
             </div>
             <div class="mb-2">
-              <input type="text" class="tw-form-control w-full" v-model="pincode" name="pincode" value="">
+              <input type="text" class="tw-form-control w-full" v-model="pincode" name="pincode" value="" maxlength="5">
             </div>
             <span v-if="errors.pincode" class="text-red-500 text-xs font-semibold">{{errors.pincode[0]}}</span>
           </div>

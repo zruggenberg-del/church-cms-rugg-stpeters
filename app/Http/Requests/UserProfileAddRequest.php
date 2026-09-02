@@ -139,7 +139,7 @@ class UserProfileAddRequest extends FormRequest
             'city_id'           => 'required',
             'state_id'          => 'required',
             'country_id'        => 'required',
-            'pincode'           => 'required|numeric|digits:6',
+            'pincode'           => 'required|numeric|digits:5',
             'mobile_no'         => 'required|numeric|digits:10|checkunique_mobile',
             'email'             => 'nullable|email|checkunique_email',
             //'membership_type'   =>'required',
@@ -232,9 +232,9 @@ class UserProfileAddRequest extends FormRequest
 
             'country_id.required'                           =>  'Country is required',
 
-            'pincode.required'                              =>  'Pincode is required',
-            'pincode.numeric'                               =>  'Pincode should be numeric',
-            'pincode.digits:6'                              =>  'Pincode should be 6 digits',
+            'pincode.required'                              =>  'Zip code is required',
+            'pincode.numeric'                               =>  'Zip code should be numeric',
+            'pincode.digits:5'                              =>  'Zip code should be 5 digits',
 
             'mobile_no.required'                            =>  'Mobile Number is required',
             'mobile_no.numeric'                             =>  'Mobile Number should be numeric',

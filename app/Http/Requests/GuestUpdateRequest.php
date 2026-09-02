@@ -77,7 +77,7 @@ class GuestUpdateRequest extends FormRequest
                 'city_id'           =>  'required',
                 'state_id'          =>  'required',
                 'country_id'        =>  'required',
-                'pincode'           =>  'nullable|numeric|digits:6',
+                'pincode'           =>  'nullable|numeric|digits:5',
                 'notes'             =>  'nullable|string|check_notes',
                 'profession'        =>  'nullable',
                 'sub_occupation'    =>  'nullable|check_occupation|max:15',
@@ -135,9 +135,9 @@ class GuestUpdateRequest extends FormRequest
 
             'country_id.required'                       =>  'Country Is Required',
 
-            'pincode.required'                          =>  'Pincode Is Required',
-            'pincode.numeric'                           =>  'Pincode Should Be Numeric',
-            'pincode.digits:6'                          =>  'Pincode Should Be 6 Digits',
+            'pincode.required'                          =>  'Zip Code Is Required',
+            'pincode.numeric'                           =>  'Zip Code Should Be Numeric',
+            'pincode.digits:5'                          =>  'Zip Code Should Be 5 Digits',
 
             'mobile_no.required'                        =>  'Mobile Number Is Required',
             'mobile_no.numeric'                         =>  'Mobile Number Should Be Numeric',

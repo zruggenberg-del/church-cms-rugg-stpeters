@@ -195,10 +195,10 @@
 
                 <div class="w-full lg:w-1/4 lg:mr-8 md:pr-8">
                     <div class="mb-2">
-                        <label for="pincode" class="tw-form-label">Pincode<span class="text-red-500">*</span></label>
+                        <label for="pincode" class="tw-form-label">Zip code<span class="text-red-500">*</span></label>
                     </div>
                     <div class="mb-2">
-                        <input type="text" class="tw-form-control w-full" v-model="pincode" name="pincode" id="pincode"  placeholder="Enter Pincode">
+                        <input type="text" class="tw-form-control w-full" v-model="pincode" name="pincode" id="pincode"  placeholder="Enter Zip code" maxlength="5">
                     </div>
                     <span v-if="errors.pincode" class="text-red-500 text-xs font-semibold">{{errors.pincode[0]}}</span>
                 </div>

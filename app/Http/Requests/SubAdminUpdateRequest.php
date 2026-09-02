@@ -76,7 +76,7 @@ class SubAdminUpdateRequest extends FormRequest
             'country_id'        =>  'required',
             'state_id'          =>  'required',
             'city_id'           =>  'required',
-            'pincode'           =>  'required|numeric|digits:6',
+            'pincode'           =>  'required|numeric|digits:5',
             'notes'             =>  'nullable|check_notes',
         ];
 
@@ -130,9 +130,9 @@ class SubAdminUpdateRequest extends FormRequest
 
             'city_id.required'                      =>'City is required',
 
-            'pincode.required'                      =>'Pincode is required',
-            'pincode.numeric'                       =>'Pincode should be numeric',
-            'pincode.digits:6'                      =>'Pincode should be 6 digits',
+            'pincode.required'                      =>'Zip code is required',
+            'pincode.numeric'                       =>'Zip code should be numeric',
+            'pincode.digits:5'                      =>'Zip code should be 5 digits',
 
             'avatar.required'                       =>'Avatar is required',
             'avatar.mimes'                          =>'Choose jpg,jpeg,png,webp file',

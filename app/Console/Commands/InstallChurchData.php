@@ -145,7 +145,10 @@ class InstallChurchData extends Command
                     'church_id' => $church->id,
                     'firstname' => explode('@', $data['admin_email'])[0],
                     'lastname' => 'Administrator',
-                    'profession' => 'Church Administrator',
+                    'profession' => 'admin',
+                    'status' => 'active',
+                    'membership_type' => 'member',
+                    'membership_start_date' => now()->toDateString(),
                 ]);
                 $logMsg .= "✓ User profile created\n";
                 $this->info('User profile created');

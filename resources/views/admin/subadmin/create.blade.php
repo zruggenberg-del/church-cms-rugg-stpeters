@@ -155,10 +155,10 @@
                 </div>
 
                 <div>
-                    <label class="tw-form-label">Pincode <span class="text-red-500">*</span></label>
+                    <label class="tw-form-label">Zip code <span class="text-red-500">*</span></label>
                     <input type="text" name="pincode" value="{{ old('pincode') }}"
                            class="tw-form-control w-full @error('pincode') border-red-400 @enderror"
-                           placeholder="6-digit pincode" maxlength="6">
+                           placeholder="5-digit zip code" maxlength="5">
                     @error('pincode')<p class="tw-form-error">{{ $message }}</p>@enderror
                 </div>
 

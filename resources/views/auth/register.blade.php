@@ -70,7 +70,7 @@
 
                             <div class="form-group my-6">
                                 <div class="">
-                                    <input id="pincode" type="text" class="form-control{{ $errors->has('pincode') ? ' is-invalid' : '' }} px-2 py-2 w-full text-sm border" name="pincode" value="{{ old('pincode') }}" placeholder="Pincode">
+                                    <input id="pincode" type="text" class="form-control{{ $errors->has('pincode') ? ' is-invalid' : '' }} px-2 py-2 w-full text-sm border" name="pincode" value="{{ old('pincode') }}" placeholder="Zip code" maxlength="5">
                                     <span class="invalid-feedback text-red-500 text-xs font-semibold" role="alert">{{ $errors->first('pincode') }}</span>
                                 </div>
                             </div>

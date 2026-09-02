@@ -97,7 +97,7 @@ class GuestAddRequest extends FormRequest
                 'city_id'           =>  'required',
                 'state_id'          =>  'required',
                 'country_id'        =>  'required',
-                'pincode'           =>  'nullable|numeric|digits:6',
+                'pincode'           =>  'nullable|numeric|digits:5',
                 'mobile_no'         =>  'required|numeric|digits:10|check_unique_mobile',
                 'email'             =>  'nullable|email|check_unique_email',
                 'aadhar_number'     =>  'nullable|numeric|digits:12|check_unique_aadhar_number',
@@ -152,9 +152,9 @@ class GuestAddRequest extends FormRequest
 
             'country_id.required'                       =>  'Country Is Required',
 
-            'pincode.required'                          =>  'Pincode Is Required',
-            'pincode.numeric'                           =>  'Pincode Should Be Numeric',
-            'pincode.digits:6'                          =>  'Pincode Should Be 6 Digits',
+            'pincode.required'                          =>  'Zip Code Is Required',
+            'pincode.numeric'                           =>  'Zip Code Should Be Numeric',
+            'pincode.digits:5'                          =>  'Zip Code Should Be 5 Digits',
 
             'mobile_no.required'                        =>  'Mobile Number Is Required',
             'mobile_no.numeric'                         =>  'Mobile Number Should Be Numeric',

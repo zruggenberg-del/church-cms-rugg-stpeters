@@ -100,19 +100,8 @@
                 </div>
             </div>
 
-            {{-- Aadhaar / Date of Birth --}}
+            {{-- Date of Birth --}}
             <div class="flex flex-col lg:flex-row">
-                <div class="tw-form-group w-full lg:w-1/2">
-                    <div class="lg:mr-8 md:mr-8">
-                        <div class="mb-2">
-                            <label for="aadhar_number" class="tw-form-label">Aadhaar Number</label>
-                        </div>
-                        <div class="mb-2">
-                            <input type="text" class="tw-form-control w-full" id="aadhar_number" name="aadhar_number" value="{{ old('aadhar_number') }}" placeholder="Aadhaar Number">
-                        </div>
-                        @error('aadhar_number')<span class="text-red-500 text-xs font-semibold">{{ $message }}</span>@enderror
-                    </div>
-                </div>
                 <div class="tw-form-group w-full lg:w-1/2">
                     <div class="lg:mr-8 md:mr-8">
                         <div class="mb-2">
@@ -252,7 +241,7 @@
                 </div>
             </div>
 
-            {{-- Country / State / City / Pincode --}}
+            {{-- Country / State / City / Zip code --}}
             <div class="tw-form-group">
                 <div class="flex flex-col lg:flex-row">
                     <div class="w-full lg:w-1/4 lg:mr-8 md:pr-8">
@@ -296,10 +285,10 @@
 
                     <div class="w-full lg:w-1/4 lg:mr-8 md:pr-8">
                         <div class="mb-2">
-                            <label for="pincode" class="tw-form-label">Pincode<span class="text-red-500">*</span></label>
+                            <label for="pincode" class="tw-form-label">Zip code<span class="text-red-500">*</span></label>
                         </div>
                         <div class="mb-2">
-                            <input type="text" class="tw-form-control w-full" id="pincode" name="pincode" value="{{ old('pincode') }}" placeholder="Enter Pincode">
+                            <input type="text" class="tw-form-control w-full" id="pincode" name="pincode" value="{{ old('pincode') }}" placeholder="Enter Zip code" maxlength="5">
                         </div>
                         @error('pincode')<span class="text-red-500 text-xs font-semibold">{{ $message }}</span>@enderror
                     </div>
