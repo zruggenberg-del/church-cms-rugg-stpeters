@@ -38675,49 +38675,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'name'],
@@ -38737,7 +38694,6 @@ __webpack_require__.r(__webpack_exports__);
       country_id: 7,
       pincode: '',
       aadhar_number: '',
-      address: '',
       notes: '',
       countrylist: [],
       statelist: [],
@@ -38806,7 +38762,6 @@ __webpack_require__.r(__webpack_exports__);
         this.state_id = this.user.state_id;
         this.city_id = this.user.city_id;
         this.pincode = this.user.pincode;
-        this.address = this.user.address;
         this.notes = this.user.notes;
         this.was_baptized = this.user.was_baptized;
         this.baptism_date = this.user.baptism_date;
@@ -57286,7 +57241,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this.success = response.data.success;
-        console.log(_this.success);
 
         _this.resetForm();
       })["catch"](function (error) {
@@ -189387,88 +189341,12 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex flex-col lg:flex-row md:flex-row" }, [
-        _c("div", { staticClass: "tw-form-group w-full lg:w-1/2 md:w-1/2" }, [
-          _c("div", { staticClass: "lg:mr-8 md:mr-8" }, [
-            _vm._m(7),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-2 w-full relative" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
-                  }
-                ],
-                staticClass: "tw-form-control w-full",
-                attrs: { type: "text", name: "address", id: "address" },
-                domProps: { value: _vm.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.address = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "absolute m-2 top-0 right-0" }, [
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "#",
-                      onclick: "codeAddress(); return false;",
-                      id: "getCords"
-                    }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "w-4 h-4 fill-current text-gray-600",
-                        attrs: {
-                          version: "1.1",
-                          xmlns: "http://www.w3.org/2000/svg",
-                          "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                          x: "0px",
-                          y: "0px",
-                          width: "30.239px",
-                          height: "30.239px",
-                          viewBox: "0 0 30.239 30.239",
-                          "xml:space": "preserve"
-                        }
-                      },
-                      [
-                        _c("g", [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M20.194,3.46c-4.613-4.613-12.121-4.613-16.734,0c-4.612,4.614-4.612,12.121,0,16.735 c4.108,4.107,10.506,4.547,15.116,1.34c0.097,0.459,0.319,0.897,0.676,1.254l6.718,6.718c0.979,0.977,2.561,0.977,3.535,0 c0.978-0.978,0.978-2.56,0-3.535l-6.718-6.72c-0.355-0.354-0.794-0.577-1.253-0.674C24.743,13.967,24.303,7.57,20.194,3.46z M18.073,18.074c-3.444,3.444-9.049,3.444-12.492,0c-3.442-3.444-3.442-9.048,0-12.492c3.443-3.443,9.048-3.443,12.492,0 C21.517,9.026,21.517,14.63,18.073,18.074z"
-                            }
-                          })
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(8),
-        _vm._v(" "),
-        _vm._m(9)
-      ]),
+      _c("portal-target", { attrs: { name: "edit_address" } }),
       _vm._v(" "),
       _c("div", { staticClass: "tw-form-group" }, [
         _c("div", { staticClass: "flex flex-col lg:flex-row" }, [
           _c("div", { staticClass: "w-full lg:w-1/4 lg:mr-8 md:pr-8" }, [
-            _vm._m(10),
+            _vm._m(7),
             _vm._v(" "),
             _c("div", { staticClass: "mb-2" }, [
               _c(
@@ -189525,7 +189403,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "w-full lg:w-1/4 lg:mr-8 md:pr-8" }, [
-            _vm._m(11),
+            _vm._m(8),
             _vm._v(" "),
             _c("div", { staticClass: "mb-2" }, [
               _c(
@@ -189582,7 +189460,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "w-full lg:w-1/4 lg:mr-8 md:pr-8" }, [
-            _vm._m(12),
+            _vm._m(9),
             _vm._v(" "),
             _c("div", { staticClass: "mb-2" }, [
               _c(
@@ -189639,7 +189517,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "w-full lg:w-1/4 lg:mr-8 md:pr-8" }, [
-            _vm._m(13),
+            _vm._m(10),
             _vm._v(" "),
             _c("div", { staticClass: "mb-2" }, [
               _c("input", {
@@ -189684,7 +189562,7 @@ var render = function() {
       _c("div", { staticClass: "flex flex-col lg:flex-row" }, [
         _c("div", { staticClass: "tw-form-group w-full lg:w-1/2" }, [
           _c("div", { staticClass: "lg:mr-8 md:mr-8" }, [
-            _vm._m(14),
+            _vm._m(11),
             _vm._v(" "),
             _c("div", { staticClass: "mb-2" }, [
               _c("textarea", {
@@ -189838,84 +189716,6 @@ var staticRenderFns = [
         [_vm._v("Sub-Category")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-2" }, [
-      _c("label", { staticClass: "tw-form-label", attrs: { for: "address" } }, [
-        _vm._v("Address")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "tw-form-group w-full lg:w-1/2 md:w-1/2" },
-      [
-        _c("div", { staticClass: "lg:mr-8 md:mr-8" }, [
-          _c("div", {
-            staticClass: "tw-form-control",
-            staticStyle: { height: "250px" },
-            attrs: { id: "map_canvas" }
-          })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "tw-form-group w-1/2", attrs: { hidden: "" } },
-      [
-        _c("div", { staticClass: "lg:mr-8 md:mr-8" }, [
-          _c("div", { staticClass: "mb-2" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 control-label",
-                attrs: { for: "latitude" }
-              },
-              [_vm._v("Latitude")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-2 w-full relative" }, [
-            _c("input", {
-              staticClass: "tw-form-control w-1/2",
-              attrs: { id: "latitude", type: "text", name: "latitude" }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "lg:mr-8 md:mr-8" }, [
-          _c("div", { staticClass: "mb-2" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 control-label",
-                attrs: { for: "longitude" }
-              },
-              [_vm._v("Longitude")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-2 w-full relative" }, [
-            _c("input", {
-              staticClass: "tw-form-control w-1/2",
-              attrs: { id: "longitude", type: "text", name: "longitude" }
-            })
-          ])
-        ])
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -206957,6 +206757,19 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
+    _vm.errors && !Array.isArray(_vm.errors) && Object.keys(_vm.errors).length
+      ? _c("div", { staticClass: "alert alert-danger" }, [
+          _c(
+            "ul",
+            { staticClass: "mb-0" },
+            _vm._l(_vm.errors, function(msgs, field) {
+              return _c("li", { key: field }, [_vm._v(_vm._s(msgs[0]))])
+            }),
+            0
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     _vm.show === "add"
       ? _c("div", { staticClass: "modal modal-mask" }, [
           _c("div", { staticClass: "modal-wrapper px-4" }, [
@@ -208003,7 +207816,7 @@ var render = function() {
                   return _c(
                     "option",
                     { key: item.id, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
+                    [_vm._v(_vm._s(item.display_name))]
                   )
                 })
               ],
@@ -263168,8 +262981,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\church-cms-new\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\church-cms-new\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! C:\Users\zrugg\Documents\GitHub\church-cms-rugg-stpeters\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\zrugg\Documents\GitHub\church-cms-rugg-stpeters\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ }),
