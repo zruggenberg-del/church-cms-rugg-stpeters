@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Events\PrayerRequestReminderMailEvent;
 use App\Events\BirthdayReminderMailEvent;
 use App\Events\ReminderMailEvent;
+use App\Events\VolunteerReminderMailEvent;
 use Illuminate\Console\Command;
 use App\Traits\EventProcess;
 use App\Models\Reminder;
@@ -82,6 +83,10 @@ class CheckMail extends Command
                         elseif ($queue->entity_name == "App\\Models\\PrayerRequest") 
                         {
                             event(new PrayerRequestReminderMailEvent($queue));
+                        }
+                        elseif ($queue->entity_name == "App\\Models\\EventVolunteerAssignment")
+                        {
+                            event(new VolunteerReminderMailEvent($queue));
                         }
                     }     
                 }

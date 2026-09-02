@@ -200,6 +200,15 @@
 
             <div class="tw-form-group w-full lg:w-1/2">
                 <div class="lg:mr-8 md:mr-8">
+                    <label class="flex items-center gap-2 text-sm text-gray-700">
+                        <input type="checkbox" v-model="can_volunteer_self_signup" true-value="1" false-value="0">
+                        Allow volunteer self-signup for events
+                    </label>
+                </div>
+            </div>
+
+            <div class="tw-form-group w-full lg:w-1/2">
+                <div class="lg:mr-8 md:mr-8">
                     <div class="mb-2">
                         <label for="notes" class="tw-form-label">Notes</label>
                     </div>
@@ -242,6 +251,7 @@
                 pincode:'',
                 aadhar_number:'',
                 notes:'',
+                can_volunteer_self_signup:0,
                 countrylist:[],
                 statelist:[],
                 citylist:[],
@@ -274,6 +284,7 @@
                 formData.append('pincode',this.pincode); 
                 formData.append('aadhar_number',this.aadhar_number);  
                 formData.append('notes',this.notes);
+                formData.append('can_volunteer_self_signup', this.can_volunteer_self_signup ? 1 : 0);
 
                 axios.post('/admin/guest/edit/validationGuestEdit/'+this.name,formData,{headers: {'Content-Type': 'multipart/form-data'}}).then(response => {     
                     $('#submit-btn').click(); 
@@ -314,6 +325,7 @@
                     this.city_id                =   this.user.city_id;
                     this.pincode                =   this.user.pincode;
                     this.notes                  =   this.user.notes;
+                    this.can_volunteer_self_signup = this.user.can_volunteer_self_signup ? 1 : 0;
                     this.was_baptized           =   this.user.was_baptized;
                     this.baptism_date           =   this.user.baptism_date;
 

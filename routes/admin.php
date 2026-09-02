@@ -878,6 +878,22 @@ Route::group(['middleware' => ['permission:update-attendance']], function () {
     Route::delete('/event/{event_id}/managers/{uid}',           'EventAttendanceController@removeManager')->name('admin.event.managers.remove');
 });
 
+Route::group(['middleware' => ['permission:read-events']], function () {
+    Route::get('/event/{event_id}/volunteers', 'EventVolunteerController@index')->name('admin.event.volunteers');
+});
+Route::group(['middleware' => ['permission:manage-event-volunteers|update-events']], function () {
+    Route::post('/event/{event_id}/volunteers/settings', 'EventVolunteerController@updateEventSettings')->name('admin.event.volunteers.settings');
+    Route::post('/event/{event_id}/volunteers/jobs', 'EventVolunteerController@storeJob')->name('admin.event.volunteers.jobs.store');
+    Route::put('/event/{event_id}/volunteers/jobs/{job_id}', 'EventVolunteerController@updateJob')->name('admin.event.volunteers.jobs.update');
+    Route::delete('/event/{event_id}/volunteers/jobs/{job_id}', 'EventVolunteerController@destroyJob')->name('admin.event.volunteers.jobs.destroy');
+    Route::post('/event/{event_id}/volunteers/jobs/{job_id}/assignments', 'EventVolunteerController@storeAssignment')->name('admin.event.volunteers.assignments.store');
+    Route::delete('/event/{event_id}/volunteers/jobs/{job_id}/assignments/{assignment_id}', 'EventVolunteerController@removeAssignment')->name('admin.event.volunteers.assignments.remove');
+});
+Route::group(['middleware' => ['permission:manage-event-volunteers|update-events|read-events']], function () {
+    Route::get('/settings/volunteer', 'EventVolunteerController@settings')->name('admin.settings.volunteer');
+    Route::post('/settings/volunteer', 'EventVolunteerController@storeSettings')->name('admin.settings.volunteer.store');
+});
+
 
 //page (admin only)
 Route::group(['middleware' => ['permission:manage-cms']], function () {

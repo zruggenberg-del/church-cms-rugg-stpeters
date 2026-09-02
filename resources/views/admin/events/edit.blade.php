@@ -360,6 +360,8 @@ $coverPreviewUrl = str_starts_with($coverPath, 'http')
                 $toggles = [
                 ['name'=>'enable_attendance','id'=>'toggle_attendance','label'=>'Attendance Tracking',
                 'desc'=>'Enable QR check-in for this event','default'=>(bool)$event->enable_attendance],
+                ['name'=>'enable_volunteer_signup','id'=>'toggle_volunteer_signup','label'=>'Volunteer Sign-up',
+                'desc'=>'Allow members to sign up for volunteer jobs','default'=>(bool)($event->enable_volunteer_signup ?? true)],
                 ['name'=>'publish_to_web', 'id'=>'toggle_web', 'label'=>'Publish to Website',
                 'desc'=>'Show on the public website', 'default'=>(bool)$event->publish_to_web],
                 ['name'=>'enable_gallery', 'id'=>'toggle_gallery', 'label'=>'Enable Gallery',

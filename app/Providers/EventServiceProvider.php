@@ -84,6 +84,14 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\BirthdayPushEventListener',
         ],
 
+        'App\Events\VolunteerPushEvent' => [
+            'App\Listeners\VolunteerPushEventListener',
+        ],
+
+        'App\Events\VolunteerReminderMailEvent' => [
+            'App\Listeners\VolunteerReminderMailEventListener',
+        ],
+
         'App\Events\VerificationMailEvent' => [
             'App\Listeners\VerificationMailEventListener',
         ],

@@ -128,6 +128,12 @@ Route::group(
 		Route::post('/attendance/session/{id}/lock',   'AttendanceController@lock');
 		Route::get('/attendance/session/{id}',         'AttendanceController@sessionReport');
 
+		// volunteer assignments
+		Route::get('/volunteer/opportunities', 'VolunteerController@opportunities');
+		Route::get('/volunteer/my-assignments', 'VolunteerController@myAssignments');
+		Route::post('/volunteer/jobs/{job_id}/signup', 'VolunteerController@signup');
+		Route::delete('/volunteer/assignments/{assignment_id}', 'VolunteerController@cancel');
+
 		//gallery
 
 		Route::get('/gallery/show/{church_id}', 'GalleryController@showdetails');

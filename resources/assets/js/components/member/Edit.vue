@@ -314,6 +314,15 @@
 
             <div class="tw-form-group w-full lg:w-1/2">
                 <div class="lg:mr-8 md:mr-8">
+                    <label class="flex items-center gap-2 text-sm text-gray-700">
+                        <input type="checkbox" v-model="can_volunteer_self_signup" true-value="1" false-value="0">
+                        Allow volunteer self-signup for events
+                    </label>
+                </div>
+            </div>
+
+            <div class="tw-form-group w-full lg:w-1/2">
+                <div class="lg:mr-8 md:mr-8">
                     <div class="mb-2">
                         <label for="notes" class="tw-form-label">Notes</label>
                     </div>
@@ -366,6 +375,7 @@
                 relation:'',
                 aadhar_number:'',
                 notes:'',
+                can_volunteer_self_signup:1,
                 avatar:'',
                 avatar_display:'',
                 countrylist:[],
@@ -412,7 +422,8 @@
                 formData.append('relation',this.relation);
                 formData.append('aadhar_number',this.aadhar_number); 
                 formData.append('name',this.name);  
-                formData.append('notes',this.notes);          
+                formData.append('notes',this.notes);
+                formData.append('can_volunteer_self_signup', this.can_volunteer_self_signup ? 1 : 0);          
                 formData.append('avatar',this.avatar);
 
                 axios.post('/admin/member/edit/'+this.name,formData,{headers: {'Content-Type': 'multipart/form-data'}}).then(response => {     
@@ -470,6 +481,7 @@
                     this.avatar_display         =   this.user.avatar_display;
                     this.relation               =   this.user.relation;
                     this.notes                  =   this.user.notes;
+                    this.can_volunteer_self_signup = this.user.can_volunteer_self_signup ? 1 : 0;
                     this.was_baptized           =   this.user.was_baptized;
                     this.baptism_date           =   this.user.baptism_date;
                     this.family                 =   this.user.family;

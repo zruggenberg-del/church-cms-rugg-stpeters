@@ -59,6 +59,7 @@ class GuestEditController extends Controller
         $array['notes']                 =   $userprofile->notes;
         $array['address']               =   $userprofile->address;
         $array['was_baptized']          =   $userprofile->was_baptized;
+        $array['can_volunteer_self_signup'] = (bool) ($userprofile->can_volunteer_self_signup ?? false);
         $array['baptism_date']          =   $userprofile->baptism_date === null ? null : date('Y-m-d', strtotime($userprofile->baptism_date));
 
         $array['countrylist']           =   SiteHelper::getCountries();
@@ -130,6 +131,7 @@ class GuestEditController extends Controller
             $userprofile->sub_occupation        = $request->sub_occupation;
             $userprofile->aadhar_number         = $request->aadhar_number;
             $userprofile->notes                 = $request->notes;
+            $userprofile->can_volunteer_self_signup = $request->boolean('can_volunteer_self_signup', false);
 
             $userprofile->save();
 

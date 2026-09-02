@@ -18,6 +18,7 @@ use App\Traits\ReminderProcess;
 use App\Events\CalendarEvent;
 use App\Events\ReminderEvent;
 use App\Traits\EventProcess;
+use App\Traits\VolunteerReminderProcess;
 use App\Models\EventGallery;
 use Illuminate\Http\Request;
 use App\Traits\LogActivity;
@@ -52,6 +53,7 @@ class EventsController extends Controller
     use SendPushNotification;
     use ReminderProcess;
     use EventProcess;
+    use VolunteerReminderProcess;
     use LogActivity;
     use Common;
 
@@ -176,6 +178,7 @@ class EventsController extends Controller
             $event->attendance_scope     = $event->enable_attendance ? ($request->input('attendance_scope', 'all')) : 'all';
             $event->attendance_group_id  = ($event->enable_attendance && $event->attendance_scope === 'group')
                 ? $request->input('attendance_group_id') : null;
+            $event->enable_volunteer_signup = $request->boolean('enable_volunteer_signup', true);
 
             if ($request->cover_image_id && str_starts_with($request->cover_image_id, 'media_')) {
                 $mediaId    = str_replace('media_', '', $request->cover_image_id);
@@ -190,6 +193,8 @@ class EventsController extends Controller
             }
 
             $event->save();
+
+            $this->rescheduleEventVolunteerReminders($event->id);
 
             $ip = $this->getRequestIP();
             $this->doActivityLog(
@@ -265,6 +270,7 @@ class EventsController extends Controller
             $event->attendance_scope     = $event->enable_attendance ? ($request->input('attendance_scope', 'all')) : 'all';
             $event->attendance_group_id  = ($event->enable_attendance && $event->attendance_scope === 'group')
                 ? $request->input('attendance_group_id') : null;
+            $event->enable_volunteer_signup = $request->boolean('enable_volunteer_signup', true);
             $event->created_by           = Auth::id();
 
             if ($request->cover_image_id && str_starts_with($request->cover_image_id, 'media_')) {
@@ -367,6 +373,8 @@ class EventsController extends Controller
                     ($event->enable_attendance && $event->attendance_scope === 'group')
                     ? $request->input('attendance_group_id')
                     : null;
+
+                $event->enable_volunteer_signup = $request->boolean('enable_volunteer_signup', true);
 
                 $event->created_by = Auth::id();
 
@@ -694,6 +702,8 @@ class EventsController extends Controller
                 && $event->attendance_scope === 'group')
             ? $request->input('attendance_group_id')
             : null;
+
+        $event->enable_volunteer_signup = $request->boolean('enable_volunteer_signup', true);
 
         $event->created_by = Auth::id();
 
@@ -1127,7 +1137,14 @@ class EventsController extends Controller
                     ->get();
             }
 
-            return view('admin.events.show', compact('event', 'expired', 'photos', 'notes', 'attended', 'notAttended', 'sessions'));
+            $volunteerJobCount = \App\Models\EventVolunteerJob::where('event_id', $id)->count();
+            $volunteerJobs = \App\Models\EventVolunteerJob::where('event_id', $id)
+                ->with(['assignments.user'])
+                ->orderBy('sort_order')
+                ->orderBy('title')
+                ->get();
+
+            return view('admin.events.show', compact('event', 'expired', 'photos', 'notes', 'attended', 'notAttended', 'sessions', 'volunteerJobCount', 'volunteerJobs'));
         }
 
         abort(403);

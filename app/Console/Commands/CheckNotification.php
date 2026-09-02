@@ -8,6 +8,7 @@ use App\Models\Reminder;
 use App\Models\Church;
 use Exception;
 use App\Events\BirthdayPushEvent;
+use App\Events\VolunteerPushEvent;
 use Log;
 
 class CheckNotification extends Command
@@ -57,8 +58,12 @@ class CheckNotification extends Command
                     $update['queue_status'] = 'deliver';
                     Reminder::where('id', $queue->id)->update($update);
 
-                    if ($queue->user->platform_token != null) {
-                        event(new BirthdayPushEvent($queue));
+                    if ($queue->user && $queue->user->platform_token != null) {
+                        if ($queue->entity_name == "App\\Models\\EventVolunteerAssignment") {
+                            event(new VolunteerPushEvent($queue));
+                        } else {
+                            event(new BirthdayPushEvent($queue));
+                        }
                     }
                 } else {
                     return FALSE;

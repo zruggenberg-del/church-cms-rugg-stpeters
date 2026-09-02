@@ -92,7 +92,12 @@ class Userprofile extends Model
      * @var array
      */
     protected $fillable = [
-        'church_id' , 'user_id' , 'firstname' , 'lastname' , 'birth_firstname' , 'birth_lastname' , 'gender' , 'date_of_birth' , 'was_baptized' , 'baptism_date' , 'profession' , 'address' , 'city_id' , 'state_id' , 'country_id' , 'pincode' , 'membership_type' , 'membership_start_date' , 'membership_end_date' , 'family' , 'marriage_status' , 'marriage_start_date' , 'notes' , 'avatar' , 'status' , 'aadhar_number'
+        'church_id' , 'user_id' , 'firstname' , 'lastname' , 'birth_firstname' , 'birth_lastname' , 'gender' , 'date_of_birth' , 'was_baptized' , 'baptism_date' , 'profession' , 'address' , 'city_id' , 'state_id' , 'country_id' , 'pincode' , 'membership_type' , 'membership_start_date' , 'membership_end_date' , 'family' , 'marriage_status' , 'marriage_start_date' , 'notes' , 'avatar' , 'status' , 'aadhar_number' , 'can_volunteer_self_signup'
+    ];
+
+    protected $casts = [
+        'can_volunteer_self_signup' => 'boolean',
+        'membership_end_date' => 'array',
     ];
 
     /**
@@ -101,13 +106,6 @@ class Userprofile extends Model
      * @var array
      */
     protected $dates = ['date_of_birth','baptism_date','membership_start_date','marriage_start_date','deleted_at'];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts=['membership_end_date'=>'array'];
 
     public function church()
     {

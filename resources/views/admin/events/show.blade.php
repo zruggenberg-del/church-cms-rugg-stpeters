@@ -174,6 +174,15 @@ $isAdmin = auth()->user()->usergroup_id == 3;
         </button>
         @endif
 
+        <button class="ev-tab-btn px-5 py-3 text-sm font-medium whitespace-nowrap transition border-b-2"
+            data-tab="volunteers">
+            <i class="fas fa-hands-helping mr-1.5 text-xs"></i>
+            Volunteers
+            @if(($volunteerJobCount ?? 0) > 0)
+            <span class="ml-1 text-xs bg-purple-100 text-purple-600 px-1.5 py-0.5 rounded-full">{{ $volunteerJobCount }}</span>
+            @endif
+        </button>
+
         @if($event->enable_attendance)
         <button class="ev-tab-btn px-5 py-3 text-sm font-medium whitespace-nowrap transition border-b-2"
             data-tab="attendance">
@@ -386,6 +395,43 @@ $isAdmin = auth()->user()->usergroup_id == 3;
 
     </div>
     @endif
+
+    {{-- ── Volunteers tab ─────────────────────────────────────────────── --}}
+    <div class="ev-tab-panel px-6 py-5" data-tab="volunteers">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <p class="text-sm text-gray-600">Manage volunteer jobs and assignments for this event.</p>
+                @if($event->enable_volunteer_signup)
+                <span class="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full mt-2 inline-block">Member self-signup enabled</span>
+                @else
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full mt-2 inline-block">Admin assignment only</span>
+                @endif
+            </div>
+            <a href="{{ route('admin.event.volunteers', $event->id) }}"
+                class="text-sm px-3 py-1.5 rounded btn btn-primary submit-btn flex items-center gap-1.5">
+                <i class="fas fa-cog text-xs"></i> Manage Volunteers
+            </a>
+        </div>
+
+        @if(($volunteerJobs ?? collect())->isEmpty())
+        <p class="text-sm text-gray-400 italic">No volunteer jobs defined yet.</p>
+        @else
+        <div class="space-y-3">
+            @foreach($volunteerJobs as $job)
+            @php $filled = $job->assignments->whereIn('status', ['confirmed', 'pending'])->count(); @endphp
+            <div class="border border-gray-200 rounded-lg p-4">
+                <div class="flex items-center justify-between">
+                    <h4 class="font-medium text-gray-800">{{ $job->title }}</h4>
+                    <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">{{ $filled }}/{{ $job->slots_needed }} filled</span>
+                </div>
+                @if($job->description)
+                <p class="text-sm text-gray-500 mt-1">{{ $job->description }}</p>
+                @endif
+            </div>
+            @endforeach
+        </div>
+        @endif
+    </div>
 
     {{-- ── Notes tab ─────────────────────────────────────────────────── --}}
     <div class="ev-tab-panel px-6 py-5" data-tab="notes">

@@ -48,6 +48,32 @@ trait SmsProcess
         }
     }
 
+    public function sendVolunteerSmsNotification($to, array $data)
+    {
+        try {
+            $template = Smstemplate::where([['name', 'VolunteerAssignment'], ['status', '1']])->first();
+            if (!$template) {
+                $template = Smstemplate::where([['name', 'Event'], ['status', '1']])->first();
+            }
+
+            $content = $template->content;
+            $content = str_replace(':volunteer_name', $data['volunteer_name'] ?? '', $content);
+            $content = str_replace(':event_title', $data['event_title'] ?? '', $content);
+            $content = str_replace(':job_title', $data['job_title'] ?? '', $content);
+            $content = str_replace(':event_date', $data['date'] ?? ($data['start_date'] ?? ''), $content);
+            $content = str_replace(':event_location', $data['location'] ?? '', $content);
+            $content = str_replace(':date', $data['date'] ?? ($data['start_date'] ?? ''), $content);
+            $content = str_replace(':location', $data['location'] ?? '', $content);
+
+            $sms = env('SMS_GATEWAY');
+            if ($sms) {
+                $this->sendSMS($content, $to);
+            }
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+        }
+    }
+
     public function sendUserNotifyGroup($to,$message)
     {
         try

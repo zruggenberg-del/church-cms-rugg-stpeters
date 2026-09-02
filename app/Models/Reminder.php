@@ -83,4 +83,9 @@ class Reminder extends Model
     {
         return $this->belongsTo('App\Models\PrayerRequest','entity_id');
     }
+
+    public function volunteerAssignment()
+    {
+        return $this->belongsTo(EventVolunteerAssignment::class, 'entity_id');
+    }
 }

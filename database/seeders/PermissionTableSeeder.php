@@ -25,6 +25,10 @@ class PermissionTableSeeder extends Seeder
             ['name' => 'create-attendance',      'display_name' => 'Create Attendance',      'description' => 'Open attendance sessions and scan member QR codes'],
             ['name' => 'update-attendance',      'display_name' => 'Update Attendance',      'description' => 'Lock/unlock sessions and assign staff to events'],
 
+            // Event Volunteers
+            ['name' => 'read-event-volunteers',   'display_name' => 'Read Event Volunteers',   'description' => 'View event volunteer jobs and assignments'],
+            ['name' => 'manage-event-volunteers',   'display_name' => 'Manage Event Volunteers', 'description' => 'Create volunteer jobs and assign members to events'],
+
             // Files / Media
             ['name' => 'create-files',           'display_name' => 'Create Files',           'description' => 'Upload files and videos'],
             ['name' => 'read-files',             'display_name' => 'Read Files',             'description' => 'View file list'],

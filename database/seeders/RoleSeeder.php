@@ -19,6 +19,7 @@ class RoleSeeder extends Seeder
             Permission::whereIn('name', [
                 'create-members', 'read-members', 'update-members',
                 'create-events', 'read-events', 'update-events',
+                'read-event-volunteers', 'manage-event-volunteers',
                 'read-attendance', 'create-attendance', 'update-attendance',
                 'create-files', 'read-files', 'view-files',
                 'create-bulletins', 'read-bulletins', 'view-bulletins', 'update-bulletins', 'delete-bulletins',
@@ -46,6 +47,7 @@ class RoleSeeder extends Seeder
             Permission::whereIn('name', [
                 'read-members',
                 'read-events', 'create-events',
+                'read-event-volunteers',
                 'read-attendance', 'create-attendance',
                 'read-files', 'create-files', 'view-files',
                 'read-bulletins', 'view-bulletins',

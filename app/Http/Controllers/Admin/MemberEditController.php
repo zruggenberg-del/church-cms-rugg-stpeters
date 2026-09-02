@@ -69,6 +69,7 @@ class MemberEditController extends Controller
         $array['relation']              =   $userprofile->relation;
         $array['notes']                 =   $userprofile->notes;
         $array['was_baptized']          =   $userprofile->was_baptized;
+        $array['can_volunteer_self_signup'] = (bool) ($userprofile->can_volunteer_self_signup ?? true);
         $array['baptism_date']          =   $userprofile->baptism_date === null ? null:date('Y-m-d',strtotime($userprofile->baptism_date));
 
         $array['countrylist']       	=   SiteHelper::getCountries();
@@ -156,6 +157,7 @@ class MemberEditController extends Controller
             $userprofile->relation              = $request->relation;
             $userprofile->aadhar_number         = $request->aadhar_number;
             $userprofile->notes                 = $request->notes;
+            $userprofile->can_volunteer_self_signup = $request->boolean('can_volunteer_self_signup', true);
 
             $userprofile->save();
 

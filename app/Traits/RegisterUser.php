@@ -127,7 +127,12 @@ trait RegisterUser
                 $userprofile->membership_type = $data->membership_type;
                 if ($userprofile->membership_type == "member") {
                     $userprofile->membership_start_date = Carbon::now();
+                    $userprofile->can_volunteer_self_signup = true;
+                } else {
+                    $userprofile->can_volunteer_self_signup = false;
                 }
+            } else {
+                $userprofile->can_volunteer_self_signup = true;
             }
 
             if (!is_null($data->family)) {
@@ -257,6 +262,7 @@ trait RegisterUser
             }
 
             $userprofile->membership_type = 'guest';
+            $userprofile->can_volunteer_self_signup = false;
 
             if (!is_null($data->aadhar_number)) {
                 $userprofile->aadhar_number = $data->aadhar_number;

@@ -82,11 +82,16 @@ class Events extends Model
         'enable_gallery',
         'enable_attendance',
         'attendance_scope',
-        'attendance_group_id','month_type'
+        'attendance_group_id',
+        'month_type',
+        'enable_volunteer_signup',
+        'volunteer_reminder_intervals',
     ];
 
     protected $casts = [
         'days_of_week' => 'array',
+        'enable_volunteer_signup' => 'boolean',
+        'volunteer_reminder_intervals' => 'array',
     ];
 
     /**
@@ -130,6 +135,11 @@ class Events extends Model
     public function attendanceSessions()
     {
         return $this->hasMany(EventAttendanceSession::class, 'event_id');
+    }
+
+    public function volunteerJobs()
+    {
+        return $this->hasMany(EventVolunteerJob::class, 'event_id')->orderBy('sort_order');
     }
 
     public function getImagePathAttribute()

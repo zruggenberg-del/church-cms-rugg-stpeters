@@ -64,6 +64,8 @@ class CheckSms extends Command
                             $this->sendSmsNotification($queue->to, $queue->data['date'], $queue->data['location']);
                         } elseif ($queue->entity_name == "App\\Models\\GroupLink") {
                             $this->sendUserNotifyGroup($queue->to, $queue->data['message']);
+                        } elseif ($queue->entity_name == "App\\Models\\EventVolunteerAssignment") {
+                            $this->sendVolunteerSmsNotification($queue->to, $queue->data ?? []);
                         }
                     }
                 } else {
